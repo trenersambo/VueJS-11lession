@@ -39,3 +39,54 @@ git config --global user.email "e@w.com"
 13). git pull приём с сервера Github.com изменений 
 14). git merge слияние веток после принятия изменений. 
 
+_________________
+
+
+ # Реальная история синхронизации репо на ПК и репо на github
+ 
+Шаг 0 (удаленно)
+
+На github уже создан РЕПО (в нем есть тестовый файл)
+
+Шаг 1 (локально)
+
+**git init**
+
+Initialized empty Git repository in D:/Front_Work/31_Vue_11/.git/
+
+Шаг 2. (локально)
+
+Создан тестовый md
+
+Шаг 3  (локально)
+
+**git add .
+git status
+git commit -m "создан файл помощи по git"**
+
+Шаг 4  (локально)
+
+Нужно локальный РЕПО на ПК подключить к РЕПО на github
+Даю краткое имя для РЕПО на github  = origin
+
+**git remote add origin https://github.com/trenersambo/VueJS-11lession.git**
+
+
+Шаг 4.1.  (локально)
+
+Проверка подключенности к сайту github
+
+**$ git remote –v**
+
+origin  https://github.com/trenersambo/VueJS-11lession.git (fetch)
+origin  https://github.com/trenersambo/VueJS-11lession.git (push)
+
+ 
+
+Шаг 5 (локально)
+
+В удаленный РЕПО (origin) послать ветку master (в ней файл .md)  
+
+**git push -u origin master**
+
+
