@@ -3,20 +3,38 @@ let app = new Vue({
   data:{
     product: "Enot GitHub" ,
     img:"bear.jpg",
-    imgs:[
-        "bear.jpg",
-        "panda.jpg",
-        "panda1.jpg",
-        "panda2.jpg",
-        "tiger.jpg"
-         ],
-  
+    imgs:[],    
+//arrImgs:[],
+//imgs: ["bear.jpg", "panda.jpg",  "panda1.jpg", "panda2.jpg",  "tiger.jpg" ],
+    
 
   },
-
+mounted() {
+ this.getData();
+},
 
 methods: {
- 
+ getData(){
+   fetch(`./db/db.json`)
+   .then((res) => res.json() )
+   .then((data)=>{
+   // console.log(data)
+
+    this.arrImgs = Object.values(data) //Объект - преобраз. в-> Массив
+    this.arrImgs.map( (el)=>{
+    this.imgs.push(el.foto) //фото из Объекта - кладем в-> Массив Imgs
+
+    //console.log(el.foto)
+
+    } )
+
+   // console.log(this.arrImgs )
+   })
+
+   .catch( (err)=>{ console.log(err) })
+ },
+
+
 },
 
 
