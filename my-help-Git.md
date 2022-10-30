@@ -60,9 +60,11 @@ Initialized empty Git repository in D:/Front_Work/31_Vue_11/.git/
 
 Шаг 3  (локально)
 
-**git add .
-git status
-git commit -m "создан файл помощи по git"**
+**git add .**
+
+**git status**
+
+**git commit -m "создан файл помощи по git"**
 
 Шаг 4  (локально)
 
