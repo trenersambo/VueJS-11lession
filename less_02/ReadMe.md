@@ -24,4 +24,15 @@
 
 ```
 
+4. Подшаманил с галлереей картинок через v-for
+
+```#JS
+<div class="gallery"
+  v-for="(foto, index) in imgs" 
+  :key = "index">
+    <p>Картинка№ {{index+1}}</p>
+    <img :src=" './img/' +foto " alt="picBJJ"
+    class="foto_gallery"/>
+  </div>
+```
 
