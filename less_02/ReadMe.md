@@ -6,7 +6,7 @@
 
 Картинка без полного указания пути в data:
 
-```#JS
+```JS
   data:{
     product: "Panda BJJ" ,
     img:"bear.jpg",
@@ -26,7 +26,7 @@
 
 4. Подшаманил с галлереей картинок через v-for
 
-```#JS
+```JS
 <div class="gallery"
   v-for="(foto, index) in imgs" 
   :key = "index">
@@ -35,4 +35,41 @@
     class="foto_gallery"/>
   </div>
 ```
+
+5. Создал JSON-файл (в планах- он будет на сервере, с него дергаю всю db-инфу)
+(файл будет пополняться еще данными)
+
+```JSON
+{
+ "id1": { "foto":"bear.jpg"},
+ "id2": { "foto": "panda.jpg"},
+ ....
+}
+```
+
+6. Запустил в muunted "дернуть ручку fetch" в methods:
+
+```JS
+getData(){
+   fetch(`./db/db.json`)
+   .then((res) => res.json() )
+   .then((data)=>{
+   // console.log(data)
+
+    this.arrImgs = Object.values(data) //Объект - преобраз. в-> Массив
+    this.arrImgs.map( (el)=>{
+    this.imgs.push(el.foto) //фото из Объекта - кладем в-> Массив Imgs
+
+    //console.log(el.foto)
+
+    } )
+
+   // console.log(this.arrImgs )
+   })
+
+   .catch( (err)=>{ console.log(err) })
+ },
+```
+
+
 
