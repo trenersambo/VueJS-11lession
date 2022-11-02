@@ -9,9 +9,23 @@ flex-direction: column; */
 border-radius: 45px;
 }
  
-.left_foto{
 
+.left_foto {
+ /*  display: inline-block; 
+ overflow: hidden;  Скрываем всё за контуром */
 }
+.left_foto img {
+  transition: 1s; /* Время эффекта */
+  /* display: block;  */
+}
+.left_foto img:hover {
+  transform: scale(1.035); /* Увеличиваем масштаб */
+  box-shadow: #a06d89 1px 1px 13px 4px;
+  border-radius: 10px;
+}
+     
+
+
 
 .right_text{
 margin-left: 50px;
@@ -28,9 +42,12 @@ margin-left: 50px;
 .foto_stock{
  display: flex;
  justify-content: center;
+
   flex-wrap: wrap;
 
- column-gap: 15px;
+ column-gap: 20px;
+ row-gap: 50px;
+
  border: 1px solid #a1a1a1;
 
  margin-top: 15px;
@@ -38,16 +55,28 @@ margin-left: 50px;
 
 }
 
+.gallery{
+position: relative;
+}
+
 .foto_gallery{
 height: 250px;
 border: 1px solid #9c9c9c;
 padding: 5px;
 border-radius: 6px;
+
 }
 
 .comment{
 border: 1px solid #9c9c9c;
  margin-top: 15px;
  padding: 8px 0 10px 0;
+}
+
+/* SVG если нет Карты клуба */
+.img_No_Cart{
+    position: absolute;
+    top: 127px;
+    left: 10px;
 }
 

@@ -29,8 +29,8 @@ methods: {
    // this.inStock.push(el.inStock); // наличие товара - кладем в-> inStock
    //} )
   
-    // С обектом - проще прописывать в карточках товара нексолько позиций
-   this.prodName = data;
+    // С обектом - проще прописывать в карточках товара несколько позиций
+   this.prodName = data.TestOne; // вытащил данные из объекта TestOne
    console.log(this.prodName)
    
    })
@@ -38,7 +38,7 @@ methods: {
    .catch( (err)=>{ console.log(err) })
  },
 
-
+ 
 },
 
 
@@ -83,8 +83,14 @@ methods: {
   
     <p>Индекс: {{index}}</p>
     <p>Имя: {{prod.name}}</p>
-    <p>Наличие: {{prod.inStock }}</p>
 
+    <p v-if="prod.inStock === true">Клубная карта: ЕСТЬ</p>
+    <p v-else>Карта клуба: НЕТ
+
+    <img src="./svg/x.svg" alt="svg" width="32" height="32" class="img_No_Cart">
+
+    </p>
+   
  
     <img :src=" './img/' +prod.foto" alt="picBJJ"
     class="foto_gallery"/>

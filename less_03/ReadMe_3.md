@@ -79,8 +79,17 @@ _____
 1. Добавил в json еще несколько позиций (name, наличие в магазине)
 
 ```JSON
-"id1": {"name": "Sambo","foto":"bear.jpg", "inStock": false},
-...
+{
+"TestOne":{
+ "id1": {"name": "Sambo","foto":"bear.jpg", "inStock": false},
+ ... ... ...
+ "id6": {"name": "MMA", "foto": "panda1.jpg", "inStock": true}
+},
+ //тут можно еще 2...3...10-ую "базу" прописать, обернув ее в Массив[]
+ // fetch в том случае можно один и тот же применять
+"TestTwo":["a","b","c"] .... ... 
+
+}
 
 ```
 
@@ -93,7 +102,7 @@ methods: {
    fetch(`./db/db.json`)
    .then((res) => res.json() )
    .then((data)=>{
-   this.prodName = data;
+   this.prodName = data.TestOne //вхожу в БД "TestOne"
    console.log(this.prodName)
    })
    .catch( (err)=>{ console.log(err) })
@@ -124,3 +133,10 @@ methods: {
 </div>
 
 ```
+
+4. Поигрался с SVG 
+Если "нет Кубной карты", то svg-иконка появится на фото
+
+5. Применил v-if / v-else Для слов "Клубная карта": есть или нет
+
+6. Чуть поигрался с анимацией через CSS
