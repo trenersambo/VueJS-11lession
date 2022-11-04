@@ -1,0 +1,13 @@
+{
+"TestOne":{
+ "id1": {"name": "Sambo","foto":"bear.jpg", "inStock": false},
+ "id2": {"name": "BJJ", "foto": "panda.jpg", "inStock": true},
+ "id3": {"name": "Judo", "foto":"tiger.jpg", "inStock": true},
+ "id4": {"name": "MuyTay", "foto": "panda2.jpg", "inStock": true},
+ "id5": {"name": "Box", "foto": "tiger.jpg", "inStock": false},
+ "id6": {"name": "MMA", "foto": "panda1.jpg", "inStock": true}
+},
+
+"TestTwo":["a","b","c"]
+
+}
