@@ -1,3 +1,5 @@
+@import "animation.css" ;
+
 .wrapper{
 width: 700px;
 /* display: flex;
@@ -11,9 +13,9 @@ border-radius: 45px;
  
 
 .left_foto {
- /*  display: inline-block; 
- overflow: hidden;  Скрываем всё за контуром */
+ 
 }
+
 .left_foto img {
   transition: 1s; /* Время эффекта */
   /* display: block;  */
@@ -23,8 +25,6 @@ border-radius: 45px;
   box-shadow: #a06d89 1px 1px 13px 4px;
   border-radius: 10px;
 }
-     
-
 
 
 .right_text{
@@ -78,5 +78,24 @@ border: 1px solid #9c9c9c;
     position: absolute;
     top: 127px;
     left: 10px;
+}
+
+/*окно, которое увидим при клик на фото*/
+.showWindow{
+position: absolute;
+top: 270px;
+left: 15px;
+
+border: 1px solid #000;
+background: #fad89d;
+width: 100px;
+height: 90px;
+border-radius: 6px;
+
+font-size: 14px;
+text-align: center;
+
+opacity: 0.65;
+
 }
 

@@ -3,14 +3,17 @@ let app = new Vue({
   data:{
     product: "EnotShop" ,
     img:"bear.jpg",
-    //imgs:[],   //для фото Товара
 
-    prodName:{}, //наимнован. товара
-    //inStock:[], // наличие товара (false / true)
+    prodName:{}, //сюда кладу все из TestOne:{}
+
+    prodTestTwo:[],//сюда кладу все из TestTwo:[]
+
+    showWindow: false, // для показа инф.окна для фото при клике мышкой на этом же фот
+
 
   },
 mounted() {
- this.getData();
+ this.getData(); // вызов fetch - в этом жизн.цикле
 },
 
 methods: {
@@ -19,31 +22,39 @@ methods: {
    .then((res) => res.json() )
    .then((data)=>{
     //console.log(data)
-
-   // this.arrImgs = Object.values(data) //Объект - преобраз. в-> Массив
-   //  this.arrImgs.map( (el)=>{
-
-   //  this.imgs.push(el.foto) ;//ФОТО из Объекта - кладем в-> Массив Imgs
-
-   //this.prodName.push(el.name);//ИМЯ из Объекта - кладем в-> prodName
-   // this.inStock.push(el.inStock); // наличие товара - кладем в-> inStock
-   //} )
   
     // С обектом - проще прописывать в карточках товара несколько позиций
    this.prodName = data.TestOne; // вытащил данные из объекта TestOne
-   console.log(this.prodName)
+   console.log(this.prodName) ;
+
+   this.prodTestTwo = data.TestTwo; // уже тащим данные из массива TestTwo
+   console.log(this.prodTestTwo)
    
    })
 
-   .catch( (err)=>{ console.log(err) })
+   .catch( (err)=>{ console.log(err) }) // обработчик ошибок
  },
 
+//Метод: показать инф.окно для фото при клике мышкой на этом же фото
+ showWind(ev){
+ ev.target.nextElementSibling.style="display: block;"
+ //this.showWindow = !this.showWindow
  
+ setTimeout(() => {
+ //ч/з 5сек. модальное окошко исчезнет
+   ev.target.nextElementSibling.style="display:none;"
+ }, 5000);
+
+
+ } ,
+
+
 },
 
 
   template:
   `<div  class="wrapper">
+
 
 <!-- ==================  -->
 
@@ -63,12 +74,13 @@ methods: {
   </div>
 
   <div class="right_text">
-      описание 
-      Lorem ipsum dolor sit, amet consectetur adipisicing
-      elit. Quia sint ipsam impedit corrupti neque at,
-       voluptatibus reprehenderit dicta porro minus, 
-       beatae aliquid, repellendus recusandae provident 
-       alias illo ullam itaque voluptatem.
+
+      <div class="bestinhell" v-for="ar in prodTestTwo" >
+
+       {{ar}}
+
+      </div>
+
   </div>
 
 </div>
@@ -78,8 +90,9 @@ methods: {
 <div class="foto_stock">
 
   <div class="gallery"
-  v-for="(prod, index) in prodName" 
-  :key = "index">
+   v-for="(prod, index) in prodName" 
+   :key = "index"
+   >
   
     <p>Индекс: {{index}}</p>
     <p>Имя: {{prod.name}}</p>
@@ -93,9 +106,20 @@ methods: {
    
  
     <img :src=" './img/' +prod.foto" alt="picBJJ"
-    class="foto_gallery"/>
+    class="foto_gallery"
+    @click="showWind"
+    />
+
+    <div class="showWindow" v-show="showWindow "  >
+
+      <p>{{prod.name}}</p>
+
+    </div>
+
 
   </div>
+
+   
 
 </div>
 

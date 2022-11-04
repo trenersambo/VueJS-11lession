@@ -8,6 +8,6 @@
  "id6": {"name": "MMA", "foto": "panda1.jpg", "inStock": true}
 },
 
-"TestTwo":["a","b","c"]
+"TestTwo":["У нас есть Контракт:","С клубом","С Родиной" , "С совестью"]
 
 }

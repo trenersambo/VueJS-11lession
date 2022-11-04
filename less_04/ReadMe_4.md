@@ -140,3 +140,83 @@ methods: {
 5. Применил v-if / v-else Для слов "Клубная карта": есть или нет
 
 6. Чуть поигрался с анимацией через CSS
+
+<br><br>
+
+_____
+
+
+# Самоподготовка №4 (VueJS, not CLI)
+
+1. Из db.json вытащил значения массива и вывели их на странице 
+
+```JS
+      <div class="bestinhell" v-for="ar in prodTestTwo" >
+
+       {{ar}}
+
+      </div>
+```
+
+2. При клике на фото выскакивает на несколько сек. модальное окошко
+
+Решил отойти от обычных во Vue (документация): 
+
+```JS
+new Vue({
+  el: '#demo',
+  data: {
+    show: true
+  }
+})
+
+
+<div id="demo">
+  <button v-on:click="show = !show">
+    Переключить
+  </button>
+  <transition name="fade">
+    <p v-if="show">привет</p>
+  </transition>
+</div>
+```
+
+... и запилить  появление блока при клике на фото - через methods (как оказалось, случайно угадал):
+
+```JS
+  data:{
+    ....
+    showWindow: false, // для показа инф.окна для фото при клике мышкой на этом же фот
+  },
+
+methods:{
+  //Метод: показать инф.окно для фото при клике мышкой на этом же фото
+ showWind(ev){
+ ev.target.nextElementSibling.style="display: block;"
+ //this.showWindow = !this.showWindow
+ 
+ setTimeout(() => {
+  //ч/з 5сек. модальное окошко исчезнет (другог не придумал, // можно клик по крестику ?)
+   ev.target.nextElementSibling.style="display:none;"
+ }, 5000);
+ } ,
+
+}
+
+//внутри template --->
+...
+...
+    <img :src=" './img/' +prod.foto" alt="picBJJ"  class="foto_gallery"
+    @click="showWind" /> // зову ф-цию от клика по фото
+    
+
+// показ мод.окна
+    <div class="showWindow" v-show="showWindow "  > 
+      <p>{{prod.name}}</p>
+    </div>
+
+```
+
+3. Игрался с анимацией @keyframes 
+Подробности кода  см. в  футере и в файле  .... \less_04\css\animation.css 
+квадрат превращается в прямоугольник со сменой цвета и обртано в квадратик
