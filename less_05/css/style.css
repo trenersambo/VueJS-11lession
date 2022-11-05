@@ -1,0 +1,146 @@
+@import "animation.css" ;
+
+.wrapper{
+width: 700px;
+/* display: flex;
+flex-direction: column; */
+
+}
+
+.top_name{
+display: flex;
+justify-content: space-around;
+align-items: center;
+
+background: #cecdcd;
+
+position: relative;
+}
+
+.couterClick{
+position: absolute;
+right: 125px;
+top: 10px;
+
+opacity: 0.8;
+
+width: 25px;
+height: 25px;
+
+background: #ed99aa;
+
+border: 1px solid rgb(158, 158, 158);
+border-radius: 50%;
+
+text-align: center;
+font-size: 16px;
+line-height: 25px;
+ 
+}
+
+.left_foto img{
+border-radius: 45px;
+}
+ 
+
+.left_foto {
+ 
+}
+
+.left_foto img {
+  transition: 1s; /* Время эффекта */
+  /* display: block;  */
+}
+.left_foto img:hover {
+  transform: scale(1.035); /* Увеличиваем масштаб */
+  box-shadow: #a06d89 1px 1px 13px 4px;
+  border-radius: 10px;
+}
+
+.btn_record{
+margin-top: 20px;
+border: 1px solid #000;
+width: 150px;
+height: 60px;
+border-radius: 6px;
+font-size: 18px;
+}
+
+.btn_record:hover{
+box-shadow: #d1cfcd 1px 1px 6px 5px;
+background: #f8e40a;
+}
+
+
+.right_text{
+margin-left: 50px;
+}
+ 
+.content{
+ display: flex;
+ justify-content: space-between;
+ border: 1px solid #c3c3c3;
+ padding: 5px;
+
+}
+
+.foto_stock{
+ display: flex;
+ justify-content: center;
+
+  flex-wrap: wrap;
+
+ column-gap: 20px;
+ row-gap: 50px;
+
+ border: 1px solid #a1a1a1;
+
+ margin-top: 15px;
+ padding: 8px 0 10px 0;
+
+}
+
+.gallery{
+position: relative;
+}
+
+.foto_gallery{
+height: 250px;
+border: 1px solid #9c9c9c;
+padding: 5px;
+border-radius: 6px;
+
+}
+
+.comment{
+border: 1px solid #9c9c9c;
+ margin-top: 15px;
+ padding: 8px 0 10px 0;
+}
+
+/* SVG если нет Карты клуба */
+.img_No_Cart{
+    position: absolute;
+    top: 127px;
+    left: 10px;
+}
+
+/*окно, которое увидим при клик на фото*/
+.showWindow{
+position: absolute;
+top: 230px;
+left: 15px;
+
+border: 1px solid #000;
+background: #fad89d;
+width: 100px;
+height: 140px;
+border-radius: 6px;
+
+font-size: 18px;
+text-align: center;
+
+opacity: 0.65;
+
+}
+
