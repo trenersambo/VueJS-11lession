@@ -324,9 +324,77 @@ data:{
  },
 ```
 
-ToDo:
+**ToDo:**
+
  сделать по клику на svg-иконку "Люди":
-[ ] - появл. меню с записями на виды спорта
-[ ] - 
-[ ] - 
+
+[v] - появл. меню с записями на виды спорта
+
+[v] - по клику "Запись на..." наполнять массив выбранным видом спорта (без валидации)
+
+
+4. По клику кнопки "Запись на..." увелич. не только счетчик, но  и наполняю массив addSportArr:[] выбранными видами спорта (бещ проверки - есть уже ли в []  такой вид спорта)
+
+data:
+
+```JS
+addSportArr:[] 
+```
+
+продолжаю писать метод addOneRecord() :
+
+```JS
+ ... ... ...
+  //добавление в Объект addSportToPerson{} значений выбранного спорта
+ this.sportObj ={};
+ {
+ this.sportObj.number = this.counterBtnRecord,
+ this.sportObj.sport = this.nameSport 
+ };
+// console.log(this.ob) //{number: 1, sport: 'Sambo'}
+
+  this.addSportArr.push(this.sportObj)
+
+ // console.log(this.addSportArr) //[ {…}, {…}, __ob__: Observer]
+```
+
+в теге top_name: 
+
+```JS
+<div class="top_name"> 
+
+    <a href="https://github.com/trenersambo/">
+      <h2>{{product}}</h2>
+    </a> 
+
+    <img src="./svg/people.svg" alt="svg" width="32" height="32" class="persona"
+    @click="showSportPerson = !showSportPerson"
+    >
+
+
+    <div class="sportPerson"  v-if="showSportPerson" >
+
+        <p v-if="addSportArr.length < 1">  Профиль пуст! </p>
+
+        <div class="addSportPerson"
+        v-for="value, indx in addSportArr" :key="indx">
+
+       <p> №{{value.number}} на: {{value.sport}} </p>
+
+        </div>
+    </div>
+
+
+
+   <div class="couterClick" 
+   v-show="showCounterBtn"> 
+   {{counterBtnRecord}}
+   </div>
+
+</div>
+```
+
+5.  По клику на svg-человек: открываю закрываю меню с сформированным списком выбранных видом спорта.
+(весь код чуть выше указан - см. п. 4)
+
 

@@ -15,9 +15,14 @@ let app = new Vue({
 
     prodTestTwo:[],//сюда кладу все из TestTwo:[]
 
-    showWindow: false, // для показа инф.окна для фото при клике мышкой на этом же фот
+    showWindow: false, // для показа инф.окна для фото при клике мышкой на этом же фото
+    
+    //клик "Запись на..." создает Массив ОБЪЕКТОВ (?) для вывода списка выбранных спорт
+    // sportObj:{}, 
+    addSportArr:[] ,
+    showSportPerson: false, //видим/не видим "корзину" выбранных видов спорта
 
-
+   
 
   },
 mounted() {
@@ -31,7 +36,7 @@ methods: {
    .then((data)=>{
     //console.log(data)
   
-    // С обектом - проще прописывать в карточках товара несколько позиций
+    // С оъбектом - проще прописывать в карточках товара несколько позиций
    this.prodName = data.TestOne; // вытащил данные из объекта TestOne
    console.log(this.prodName) ;
 
@@ -43,12 +48,29 @@ methods: {
    .catch( (err)=>{ console.log(err) }) // обработчик ошибок
  },
 
-//cчетчик кликов по кнопке "Запись на ..."
+//cчетчик кликов по кнопке "Запись на ..." (без валидации , что такой вид спорт уже есть)
  addOneRecord(){
  this.counterBtnRecord++
  this.showCounterBtn = true ;
 
+ //добавление в Объект addSportToPerson{} значений выбранного спорта
+ this.sportObj ={};
+ {
+ this.sportObj.number = this.counterBtnRecord,
+ this.sportObj.sport = this.nameSport 
+ };
+// console.log(this.ob) //{number: 1, sport: 'Sambo'}
+
+  this.addSportArr.push(this.sportObj)
+
+ // console.log(this.addSportArr) //[ {…}, {…}, __ob__: Observer]
+
+
  },
+
+
+
+
 
 //Метод: показать инф.окно для фото при клике мышкой на этом же фото
  showWind(ev){
@@ -76,6 +98,7 @@ methods: {
   `<div  class="wrapper">
 
 
+
 <!-- ==================  -->
 
 <div class="top_name"> 
@@ -84,7 +107,24 @@ methods: {
       <h2>{{product}}</h2>
     </a> 
 
-    <img src="./svg/people.svg" alt="svg" width="32" height="32" class="persona">
+    <img src="./svg/people.svg" alt="svg" width="32" height="32" class="persona"
+    @click="showSportPerson = !showSportPerson"
+    >
+
+
+    <div class="sportPerson"  v-if="showSportPerson" >
+
+        <p v-if="addSportArr.length < 1">  Профиль пуст! </p>
+
+        <div class="addSportPerson"
+        v-for="value, indx in addSportArr" :key="indx">
+
+       <p> №{{value.number}} на: {{value.sport}} </p>
+
+        </div>
+    </div>
+
+
 
    <div class="couterClick" 
    v-show="showCounterBtn"> 
